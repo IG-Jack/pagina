@@ -1,17 +1,31 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef,AfterViewInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import Swiper from 'swiper';
+import { gsap } from 'gsap';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
- 
+export class HomePage implements AfterViewInit {
+
+
+  @ViewChild('timelineContainer', { static: true }) timelineContainer: ElementRef | null = null;
+
 @ViewChild("swiper")
 swiperRef:ElementRef   | undefined;
 swiper?:Swiper;
+
+  private imageSources = [
+    'assets/descarga.png',
+    'assets/descarga (1).png',
+    'assets/descarga (2).png',
+  ]; // Lista de fuentes de imagen
+// Lista de fuentes de imagen
+ currentImageIndex = 0; 
+currentImage = this.imageSources[this.currentImageIndex]; // Comenzar con la primera imagen
 
 constructor(private router: Router) {}
 
@@ -34,5 +48,75 @@ goPrev(){
  swiperSlideChanged(e:any){
 console.log("changed",e);
  } 
-   
+ 
+
+
+ ngAfterViewInit() {
+  this.startGSAPAnimations();
+    this.startImageLoop();
+
+}
+
+private startGSAPAnimations() {
+  if (this.timelineContainer) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          gsap.from('.timeline-event-horizontal', {
+            opacity: 0,
+            x: -100, /* Desplazamiento desde la izquierda */
+            scale: 0.8, /* Escalado para un efecto llamativo */
+            duration: 1, /* Duración de la animación */
+            stagger: 0.3, /* Tiempo entre animaciones */
+            ease: 'power3.out', /* Efecto suave */
+          });
+
+          observer.disconnect(); // Para evitar reanimaciones innecesarias
+        }
+      });
+    });
+
+    observer.observe(this.timelineContainer.nativeElement);
   }
+
+
+ }
+  private startImageLoop() {
+    const timeline = gsap.timeline({ repeat: -1 });
+
+    timeline.call(() => {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.imageSources.length; // Avanzar al siguiente índice
+      this.currentImage = this.imageSources[this.currentImageIndex]; // Actualizar la imagen actual
+    }, [], 0); // Cambiar la imagen cada 3 segundos
+
+    timeline.fromTo(
+      '.transition-img',
+      {
+        opacity: 0,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power3.out',
+      },
+      0
+    );
+
+    timeline.to(
+      '.transition-img',
+      {
+        opacity: 0,
+        scale: 1.2,
+        duration: 1,
+        ease: 'power3.out',
+      },
+      2
+    );
+  }
+}
+
+ 
+  
+  

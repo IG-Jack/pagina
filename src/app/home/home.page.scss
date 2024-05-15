@@ -1,9 +1,8 @@
 
 .header-container {
   position: relative;
-  height: 50rem;
+  height: 1010px;
   overflow: hidden;
-  margin: 1px,1px;
 
 }
 
@@ -14,11 +13,9 @@
   background-image: url("https://prensaregional.pe/wp-content/uploads/2020/10/Central-Solar-Fotovoltaica-Rubi-se-ubica-en-Moquegua.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: -3.6rem;
   padding: 0;
   overflow: hidden;
   opacity: 1;
-margin-bottom: 4rem;
 }
 
 .header::before {
@@ -104,7 +101,7 @@ margin-top: 10px;
 
 .stys{
 margin-top:0px;
-text-align: center!important;;
+text-align: left!important;;
 -webkit-font-smoothing: antialiased;
 font: 30px 'Roobert', sans-serif;
 font-weight: 400;   
@@ -118,7 +115,7 @@ background: transparent no-repeat bottom;
 font-size: 1.5rem;
 position: relative;
 background-size: 100% auto;
-padding-left:1rem;
+
 color: #fff!important;
 padding-bottom: 150px;
 background-color: #000000!important;
@@ -161,14 +158,18 @@ background-color: black;
     position: relative;
     background-size: 100% auto;
     padding-top: 1.2rem;
-    padding-left:8rem;
-    background-color: #000408!important;
+    padding-left:0.4rem;
+          background-color: #000408!important;
   }
 .af{
   margin-bottom: 40px;
 }
 .st{
-  margin-top:-10px;
+  width: 100%;
+  height: auto;
+  background-color: #000000;
+  padding-left:70px;
+  margin-top: -10px;
 }
 .ion{
   width: 100%;
@@ -310,5 +311,81 @@ border: 0.1spx solid black-;
 .encabezado ion-img {
   max-width: 100%;
   max-height: 100%;
-}
+   }
 
+   .timeline-container-horizontal {
+    display: flex; /* Mantiene los eventos en línea horizontalmente */
+    overflow-x: auto; /* Permite el desplazamiento horizontal si el contenido excede el ancho */
+ /* Evita que el contenido se rompa a una nueva línea */
+    padding: 20px; /* Espacio interno para el contenedor */
+    gap: 20px; /* Espacio entre contenedores */
+  }
+  
+  .timeline-event-horizontal {
+    display: inline-block; /* Para mantener los eventos en línea horizontalmente */
+    position: relative; /* Para posicionar elementos como iconos */
+    padding: 10px; /* Espacio alrededor del contenido */
+    width: 350px!important; /* Ancho fijo para cada evento */
+    height: auto; /* Ajusta la altura según el contenido */
+    background: #ffffff; /* Fondo para el contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    text-align: center; /* Centra el contenido dentro de cada evento */
+  }
+  
+  .timeline-icon-horizontal {
+    position: absolute; /* Para posicionar el icono respecto al evento */
+    top: -10px; /* Ubicación relativa al borde superior del evento */
+    left: 50%; /* Centra el icono horizontalmente */
+    transform: translateX(-50%); /* Para centrar el icono */
+    width: 30px;
+    height: 30px;
+    background-color: #ff5722; /* Color distintivo para el icono */
+    border-radius: 50%; /* Bordes redondeados para el icono */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para el icono */
+  }
+  
+  .timeline-content-horizontal {
+    padding: 10px; /* Espacio alrededor del contenido */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Centra el contenido */
+    height: auto; /* Ajusta la altura según el contenido */
+    overflow-x: auto; /* Permite el desplazamiento vertical */
+    white-space: normal; /* Permite que el texto se envuelva */
+    word-wrap: break-word; /* Permite romper palabras largas */
+    width: 350px;
+  }
+  
+  .timeline-date {
+    font-size: 0.85em; /* Tamaño más pequeño para la fecha */
+    color: #757575; /* Color gris para la fecha */
+    margin-top: 10px; /* Espacio entre el texto y la fecha */
+  }
+  .vertical-container{
+    width: 100%;
+    height: 100%;
+    display: flex; /* Uso de flexbox para disposición flexible */
+  flex-direction: column; /* Alineación vertical de elementos */
+  justify-content: center; /* Centrado vertical */
+  align-items: flex-start; /* Alineación horizontal a la izquierda */
+  gap: 10px; /* Espacio entre elementos en la disposición vertical */
+  height: 100vh; /* Altura completa para el centrado vertical */
+  background-color: #f5f5f5; /* Color de fondo para el contenedor */
+  }
+  .vertical-containers {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 100%; /* Ocupa toda la altura del contenedor padre */
+    display: flex; /* Uso de flexbox para disposición flexible */
+    flex-direction: column; /* Alineación vertical de elementos */
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+    background-color: #f5f5f5; /* Color de fondo para el contenedor */
+  }
+  
+  .transition-img {
+    width: 150px; /* Tamaño del ion-img */
+    height: 150px; /* Tamaño del ion-img */
+    object-fit: cover; /* Para asegurar que las imágenes se ajusten */
+    border-radius: 10px; /* Bordes redondeados para un aspecto suave */
+  }
+  
