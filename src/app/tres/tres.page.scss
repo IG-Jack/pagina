@@ -1,3 +1,6 @@
+*{
+  margin: 0;
+ }
 .encabezado {
     width: 100%; /* Ajusta al ancho del contenedor padre (ion-col) */
     height: 100%; /* Ajusta la altura según sea necesario */
@@ -22,7 +25,7 @@
     align-items: center; /* Asegura el centrado vertical en el contenedor */
     text-align: center;
     background-position: center;
-  }
+    background-color: #151E26;  }
   
   .diagrama {
     width: 610px;
